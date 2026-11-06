@@ -134,7 +134,7 @@ fn main() -> ExitCode {
     match cli.command {
         Commands::Init { path, password } => {
             println!("Initializing vault at: {}", path);
-            println!("Password: {}", password.unwrap_or_else(|| "will be prompted".to_string()));
+            println!("Password: {}", if password.is_some() { "provided (not shown)" } else { "will be prompted" });
             // TODO: Implement init
             ExitCode::SUCCESS
         }
